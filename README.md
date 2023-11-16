@@ -1,6 +1,6 @@
 ## Endpoints
 
-Endpoint: '/pizzas'. Method: GET
+Endpoint: '/pizzas'. Method: GET<br>
 Response example:
 ```json
 [
@@ -50,12 +50,13 @@ Response example:
     }
 ]
 ```
-Endpoint: '/pizzas/{id}'. Method: GET
-Endpoint: '/pizzas'. Method: POST
-Endpoint: '/pizzas/{id}'. Method: PUT
-Endpoint: '/pizzas/{id}'. Method: DELETE
+Endpoint: '/pizzas/{id}'. Method: GET<br>
+Endpoint: '/pizzas'. Method: POST<br>
+Endpoint: '/pizzas/{id}'. Method: PUT<br>
+Endpoint: '/pizzas/{id}'. Method: DELETE<br>
 
-Endpoint: '/ingredients'. Method: GET
+Endpoint: '/ingredients'. Method: GET<br>
+```json
 Response example:
 [
     {
@@ -73,6 +74,7 @@ Response example:
         "updated_at": "2023-11-15T23:04:02.000000Z"
     }
 ]
+```
 
-Endpoint: '/ingredients'. Method: POST
-Endpoint: '/ingredients/{id}'. Method: DELETE
+Endpoint: '/ingredients'. Method: POST<br>
+Endpoint: '/ingredients/{id}'. Method: DELETE<br>
