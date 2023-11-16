@@ -56,8 +56,8 @@ Endpoint: '/pizzas/{id}'. Method: PUT<br>
 Endpoint: '/pizzas/{id}'. Method: DELETE<br>
 
 Endpoint: '/ingredients'. Method: GET<br>
-```json
 Response example:
+```json
 [
     {
         "id": 1,
