@@ -2,6 +2,7 @@
 
 Endpoint: '/pizzas'. Method: GET
 Response example:
+```json
 [
     {
         "id": 1,
@@ -48,7 +49,7 @@ Response example:
         "updated_at": "2023-11-15T23:04:02.000000Z"
     }
 ]
-
+```
 Endpoint: '/pizzas/{id}'. Method: GET
 Endpoint: '/pizzas'. Method: POST
 Endpoint: '/pizzas/{id}'. Method: PUT
