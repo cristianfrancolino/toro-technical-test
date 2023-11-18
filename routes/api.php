@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/pizzas', [PizzaController::class, 'index']);
+Route::middleware('auth:sanctum')->get('/pizzas', [PizzaController::class, 'index']);
 Route::get('/pizzas/{id}', [PizzaController::class, 'show']);
 Route::post('/pizzas', [PizzaController::class, 'store']);
 Route::put('/pizzas/{id}', [PizzaController::class, 'update']);
