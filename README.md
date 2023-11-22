@@ -1,3 +1,24 @@
+# toro-technical-test
+
+## Project setup
+```
+composer install
+copy .env.example to .env (then configure database connection)
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+```
+
+### Compiles and hot-reloads for development
+```
+php artisan serve
+```
+
+### Default user
+A default user is created when using php artisan db:seed.
+email: test@test.com
+password: test1234
+
 ## Endpoints
 
 Endpoint: '/pizzas'. Method: GET<br>
