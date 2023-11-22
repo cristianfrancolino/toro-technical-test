@@ -15,8 +15,8 @@ php artisan serve
 ```
 
 ### Default user
-A default user is created when using php artisan db:seed.
-email: test@test.com
+A default user is created when using php artisan db:seed.<br>
+email: test@test.com<br>
 password: test1234
 
 ## Endpoints
