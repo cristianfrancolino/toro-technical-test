@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIngredientRequest;
+use App\Http\Requests\UpdateIngredientRequest;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Resources\IngredientResource;
 
 class IngredientController extends Controller
 {
@@ -14,7 +17,7 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-        return $ingredients;
+        return IngredientResource::collection($ingredients);
     }
 
     /**
@@ -25,7 +28,7 @@ class IngredientController extends Controller
         $validated = $request->validated();
         $ingredient = Ingredient::create($validated);
 
-        return response()->json(['message' => 'Ingredient successfully created', 'ingredient' => $ingredient], 201);
+        return response()->json(['message' => 'Ingredient successfully created', 'ingredient' => new IngredientResource($ingredient)], 201);
     }
 
     /**
@@ -39,9 +42,27 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateIngredientRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        try {
+            $ingredient = Ingredient::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Ingredient not found'], 404);
+        }
+
+        if ($request->has('name')) {
+            $ingredient->name = $validated['name'];
+        }
+
+        if ($request->has('cost_price')) {
+            $ingredient->cost_price = $validated['cost_price'];
+        }
+
+        $ingredient->save();
+
+        return response()->json(['message' => 'Ingredient successfully updated', 'ingredient' => $ingredient], 200);
     }
 
     /**
@@ -56,6 +77,6 @@ class IngredientController extends Controller
         }
 
         $ingredient->delete();
-        return response()->json(['message' => 'Ingredient successfully deleted', 'ingredient' => $ingredient], 200);
+        return response()->json(['message' => 'Ingredient successfully deleted', 'ingredient' => new IngredientResource($ingredient)], 200);
     }
 }

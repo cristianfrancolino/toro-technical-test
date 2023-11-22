@@ -29,7 +29,7 @@ class PizzaController extends Controller
         $pizza = Pizza::create($validated);
         $pizza->ingredients()->attach($validated['ingredients']);
 
-        return response()->json(['message' => 'Pizza successfully created', 'pizza' => $pizza], 201);
+        return response()->json(['message' => 'Pizza successfully created', 'pizza' => new PizzaResource($pizza)], 201);
     }
 
     /**
@@ -60,7 +60,7 @@ class PizzaController extends Controller
         }
 
         if ($request->has('name')) {
-            $pizza->name = $validated['nombre'];
+            $pizza->name = $validated['name'];
         }
 
         if ($request->has('ingredients')) {

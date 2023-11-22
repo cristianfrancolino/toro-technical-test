@@ -17,7 +17,7 @@ class IngredientResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'cost_price' => $this->cost_price,
+            'cost_price' => floatval($this->cost_price),
         ];
     }
 }
